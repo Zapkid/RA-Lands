@@ -3,10 +3,10 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
-import { Mail, Menu, Phone, X } from "lucide-react";
+import { Menu, Phone, X } from "lucide-react";
 import { clsx } from "clsx";
 import { Logo } from "./Logo";
-import { container } from "./ui";
+import { btnGold, container } from "./ui";
 import { NAV, SITE } from "@/lib/site";
 
 export function Header() {
@@ -26,7 +26,7 @@ export function Header() {
           <Logo />
         </Link>
 
-        <nav aria-label="Main" className="hidden lg:block">
+        <nav aria-label="Main" className="hidden xl:block">
           <ul className="flex items-center">
             {NAV.map((item) => (
               <li key={item.href}>
@@ -34,7 +34,7 @@ export function Header() {
                   href={item.href}
                   aria-current={isActive(item.href) ? "page" : undefined}
                   className={clsx(
-                    "px-4 py-2 text-[15px] font-semibold transition-colors hover:text-gold-dark",
+                    "whitespace-nowrap px-2.5 py-2 text-[17px] font-semibold transition-colors hover:text-gold-dark",
                     isActive(item.href) ? "text-gold-dark" : "text-sage-deep",
                   )}
                 >
@@ -46,25 +46,21 @@ export function Header() {
         </nav>
 
         <div className="hidden items-center gap-6 xl:flex">
-          <a href={SITE.phoneHref} className="flex items-center gap-2.5 text-sage-deep hover:text-gold-dark">
+          <a href={SITE.phoneHref} className="hidden items-center whitespace-nowrap 2xl:flex gap-2.5 text-sage-deep hover:text-gold-dark">
             <Phone className="h-6 w-6" aria-hidden="true" />
             <span className="leading-tight">
-              <span className="block text-[11px] font-bold tracking-wider uppercase">Call us now</span>
+              <span className="block text-[14px] font-bold tracking-wider uppercase">Call us now</span>
               <span className="block text-base font-bold text-navy">{SITE.phone}</span>
             </span>
           </a>
-          <Link href="/#newsletter" className="flex items-center gap-2.5 text-sage-deep hover:text-gold-dark">
-            <Mail className="h-6 w-6" aria-hidden="true" />
-            <span className="leading-tight">
-              <span className="block text-[11px] font-bold tracking-wider uppercase">Join now</span>
-              <span className="block text-base font-bold text-navy">Newsletter</span>
-            </span>
+          <Link href="/sell-my-land" className={`${btnGold} whitespace-nowrap`}>
+            Sell my land
           </Link>
         </div>
 
         <button
           type="button"
-          className="rounded-md p-2 text-olive hover:bg-sage-pale lg:hidden"
+          className="rounded-md p-2 text-olive hover:bg-sage-pale xl:hidden"
           aria-expanded={open}
           aria-controls="mobile-menu"
           aria-label={open ? "Close menu" : "Open menu"}
@@ -75,7 +71,7 @@ export function Header() {
       </div>
 
       {open ? (
-        <nav id="mobile-menu" aria-label="Mobile" className="border-t border-line bg-white lg:hidden">
+        <nav id="mobile-menu" aria-label="Mobile" className="border-t border-line bg-white xl:hidden">
           <ul className={`${container} flex flex-col py-2`}>
             {NAV.map((item) => (
               <li key={item.href}>
@@ -95,8 +91,8 @@ export function Header() {
               <a href={SITE.phoneHref} className="font-bold text-navy">
                 Call {SITE.phone}
               </a>
-              <Link href="/#newsletter" className="font-bold text-sage-deep">
-                Join the newsletter
+              <Link href="/sell-my-land" className="font-bold text-gold-dark">
+                Sell my land
               </Link>
             </li>
           </ul>

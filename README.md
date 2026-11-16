@@ -52,7 +52,7 @@ parcel's status (For Sale, Under Contract, Sold) and optional financing terms.
 
 ## Forms
 
-The consultation form, property inquiries and newsletter signup all post to `/api/contact`, which validates the
+The consultation form, property inquiries and the Sell My Land form all post to `/api/contact`, which validates the
 input (honeypot field, length limits, header-injection safe, light per-IP throttle) and emails it through the
 SMTP2GO API. Nothing is stored. Set `SMTP2GO_API_KEY`, `CONTACT_FROM_EMAIL` (verified sender) and
 `CONTACT_TO_EMAIL` in Vercel. Replies go straight to the visitor (Reply-To).

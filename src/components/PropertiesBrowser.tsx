@@ -16,7 +16,7 @@ import {
 type Sort = "featured" | "price-asc" | "price-desc" | "acres-desc";
 
 const selectClass =
-  "w-full rounded-md border border-line bg-white px-3 py-2.5 text-[15px] text-ink";
+  "w-full rounded-md border border-line bg-white px-3 py-2.5 text-[18px] text-ink";
 
 /** Filter bar and grid for the Properties page. The list is small, so it filters in the browser. */
 export function PropertiesBrowser({ parcels }: { parcels: ParcelRow[] }) {
@@ -122,7 +122,7 @@ export function PropertiesBrowser({ parcels }: { parcels: ParcelRow[] }) {
       </form>
 
       <div className="mt-6 flex items-center justify-between gap-4">
-        <p role="status" aria-live="polite" className="text-[15px] font-semibold text-sage-deep">
+        <p role="status" aria-live="polite" className="text-[18px] font-semibold text-sage-deep">
           {shown.length} {shown.length === 1 ? "property" : "properties"}
         </p>
         {filtered || sort !== "featured" ? (
@@ -147,7 +147,7 @@ export function PropertiesBrowser({ parcels }: { parcels: ParcelRow[] }) {
           </h2>
           <p className="mx-auto mt-3 max-w-lg text-ink/80">
             {parcels.length === 0
-              ? "Join the newsletter to get a deal alert the moment new land is listed, or tell us what you are looking for."
+              ? "Tell us what you are looking for and we will reach out the moment new land is listed."
               : "Try widening the filters, or tell us what you are looking for and we will keep an eye out."}
           </p>
           <Link href="/contact" className={`${btnGold} mt-6`}>

@@ -16,7 +16,7 @@ export default function PrivacyPage() {
     <>
       <PageHeader title="Privacy Policy & Terms" intro={`Last updated ${UPDATED}`} />
       <section className="py-14 sm:py-16">
-        <div className={`${container} mx-auto max-w-3xl space-y-6 text-[17px] text-ink/90 [&_h2]:mt-10 [&_h2]:text-2xl [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-1.5`}>
+        <div className={`${container} mx-auto max-w-3xl space-y-6 text-[20px] text-ink/90 [&_h2]:mt-10 [&_h2]:text-2xl [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:space-y-1.5`}>
           <h2>Who we are</h2>
           <p>
             This website is operated by {SITE.name}. You can reach us at{" "}
@@ -29,12 +29,11 @@ export default function PrivacyPage() {
           <h2>Information we collect</h2>
           <p>We only collect what you choose to send us through our forms:</p>
           <ul>
-            <li>Consultation and property inquiry forms: your name, email, optional phone number, and your message.</li>
-            <li>Newsletter signup: your email address.</li>
+            <li>Contact and property inquiry forms: your name, email, optional phone number, and your message.</li>
+            <li>Sell my land form: your contact details and the details of the land you describe.</li>
           </ul>
           <p>
-            Form submissions are delivered to us by email. We use them to reply to you and, for the newsletter, to
-            tell you when new properties are available. We do not sell your information.
+            Form submissions are delivered to us by email. We use them to reply to you. We do not sell your information.
           </p>
 
           <h2>Cookies and tracking</h2>
@@ -53,9 +52,7 @@ export default function PrivacyPage() {
 
           <h2>Your choices</h2>
           <p>
-            You can ask us to see, correct or delete the information you sent us, or to remove you from the
-            newsletter, by emailing {SITE.email}. Every newsletter message can also be answered with
-            &quot;unsubscribe&quot;.
+            You can ask us to see, correct or delete the information you sent us, by emailing {SITE.email}.
           </p>
 
           <h2>Terms of use</h2>

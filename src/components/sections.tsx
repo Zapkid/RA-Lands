@@ -14,7 +14,6 @@ import {
   Sprout,
 } from "lucide-react";
 import type { ReactNode } from "react";
-import { LandscapeArt } from "./LandscapeArt";
 import { ParcelCard } from "./ParcelCard";
 import { btnGold, btnOutline, btnOutlineLight, btnSage, container } from "./ui";
 import { getPublishedParcels } from "@/lib/parcels-data";
@@ -34,9 +33,9 @@ export function PageHeader({ title, intro }: { title: string; intro?: ReactNode 
         aria-hidden="true"
         className="absolute inset-x-0 bottom-0 h-16 w-full sm:h-24"
       >
-        <path d="M0 60 C240 20 480 30 720 60 S1200 90 1440 50 L1440 120 L0 120Z" fill="#e6d4a8" opacity="0.55" />
-        <path d="M0 85 C300 55 560 65 820 88 S1240 100 1440 75 L1440 120 L0 120Z" fill="#b7c3a5" opacity="0.8" />
-        <path d="M0 105 C300 90 600 95 900 108 S1250 112 1440 100 L1440 120 L0 120Z" fill="#ffffff" />
+        <path d="M0 60 C240 20 480 30 720 60 S1200 90 1440 50 L1440 120 L0 120Z" fill="#e8dcc2" opacity="0.7" />
+        <path d="M0 85 C300 55 560 65 820 88 S1240 100 1440 75 L1440 120 L0 120Z" fill="#c98b5a" opacity="0.45" />
+        <path d="M0 105 C300 90 600 95 900 108 S1250 112 1440 100 L1440 120 L0 120Z" fill="#fbf7ee" />
       </svg>
     </section>
   );
@@ -55,29 +54,44 @@ export function SectionHeading({ children, eyebrow }: { children: ReactNode; eye
 
 /* ---------- Home hero ---------- */
 
+function HeroIllustration() {
+  return (
+    <svg
+      viewBox="0 0 520 440"
+      className="mx-auto h-auto w-full max-w-[540px] rounded-3xl shadow-xl"
+      role="presentation"
+    >
+      <defs>
+        <linearGradient id="hero-sky" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0" stopColor="#0d1f3c" />
+          <stop offset="0.6" stopColor="#1d3a68" />
+          <stop offset="1" stopColor="#c98b5a" />
+        </linearGradient>
+      </defs>
+      <rect width="520" height="440" fill="url(#hero-sky)" />
+      <circle cx="380" cy="190" r="58" fill="#f3ead8" opacity="0.95" />
+      <path d="M0 250 L90 170 L170 240 L260 150 L360 245 L440 190 L520 250 L520 440 L0 440Z" fill="#12294d" opacity="0.75" />
+      <path d="M0 300 C90 260 190 270 280 300 S430 310 520 270 L520 440 L0 440Z" fill="#a0602f" />
+      <path d="M0 355 C110 320 210 335 300 358 S440 368 520 340 L520 440 L0 440Z" fill="#e8dcc2" />
+      <path d="M0 405 C120 385 230 392 330 405 S460 412 520 398 L520 440 L0 440Z" fill="#f6efe0" />
+      <path d="M255 440 C262 400 280 380 320 360" stroke="#a0602f" strokeWidth="3" fill="none" strokeDasharray="8 8" />
+    </svg>
+  );
+}
+
 export function Hero() {
   return (
     <section className="relative overflow-hidden bg-sage-pale">
       <div className={`${container} grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-2`}>
-        <div className="order-2 lg:order-1" aria-hidden="true">
-          <div className="relative mx-auto h-[300px] w-full max-w-[460px] sm:h-[400px] sm:max-w-[520px]">
-            <div className="absolute top-8 left-0 aspect-[3/4] w-[46%] -rotate-[12deg] rounded-2xl bg-white p-1.5 shadow-xl">
-              <LandscapeArt variant={1} className="h-full w-full rounded-xl" />
-            </div>
-            <div className="absolute top-0 left-[27%] z-10 aspect-[3/4] w-[46%] rotate-[3deg] rounded-2xl bg-white p-1.5 shadow-xl">
-              <LandscapeArt variant={0} className="h-full w-full rounded-xl" />
-            </div>
-            <div className="absolute top-12 right-0 aspect-[3/4] w-[44%] rotate-[11deg] rounded-2xl bg-white p-1.5 shadow-xl">
-              <LandscapeArt variant={2} className="h-full w-full rounded-xl" />
-            </div>
-          </div>
+        <div className="order-2" aria-hidden="true">
+          <HeroIllustration />
         </div>
 
-        <div className="order-1 lg:order-2">
+        <div className="order-1">
           <p className="mb-3 text-xs font-bold tracking-[0.2em] text-gold-dark uppercase">
             Land investments &amp; advisory
           </p>
-          <h1 className="text-balance text-4xl sm:text-5xl lg:text-[54px]">
+          <h1 className="text-balance text-4xl sm:text-5xl lg:text-[56px]">
             Your Path to Affordable Land Ownership
           </h1>
           <p className="mt-5 max-w-xl text-lg text-ink/85">
@@ -88,8 +102,8 @@ export function Hero() {
             <Link href="/properties" className={btnGold}>
               View properties
             </Link>
-            <Link href="/contact" className={btnOutline}>
-              Request a consultation
+            <Link href="/sell-my-land" className={btnOutline}>
+              Sell my land
             </Link>
           </div>
         </div>
@@ -100,8 +114,8 @@ export function Hero() {
         aria-hidden="true"
         className="pointer-events-none absolute inset-x-0 bottom-0 h-14 w-full sm:h-20"
       >
-        <path d="M0 70 C240 30 480 40 720 70 S1200 100 1440 60 L1440 120 L0 120Z" fill="#e6d4a8" opacity="0.5" />
-        <path d="M0 98 C300 70 600 78 900 96 S1250 108 1440 90 L1440 120 L0 120Z" fill="#ffffff" />
+        <path d="M0 70 C240 30 480 40 720 70 S1200 100 1440 60 L1440 120 L0 120Z" fill="#e8dcc2" opacity="0.7" />
+        <path d="M0 98 C300 70 600 78 900 96 S1250 108 1440 90 L1440 120 L0 120Z" fill="#fbf7ee" />
       </svg>
     </section>
   );
@@ -130,8 +144,7 @@ export async function FeaturedProperties() {
           </ul>
         ) : (
           <p className="mx-auto max-w-xl text-center text-ink/80">
-            New properties are coming soon. Join the newsletter below to get a deal alert as soon as land is
-            listed.
+            New properties are coming soon. Tell us what you are looking for and we will let you know as soon as land is listed.
           </p>
         )}
         <div className="mt-10 text-center">
@@ -171,7 +184,7 @@ export function Services() {
                 <h3 className="mb-3 text-xl">
                   {i + 1}. {s.title}
                 </h3>
-                <p className="text-[16px] text-ink/85">{s.body}</p>
+                <p className="text-[19px] text-ink/85">{s.body}</p>
               </li>
             );
           })}
@@ -226,7 +239,7 @@ export function WhyChoose() {
               </span>
               <div>
                 <h3 className="mb-1.5 text-lg">{r.title}</h3>
-                <p className="text-[16px] text-ink/85">{r.body}</p>
+                <p className="text-[19px] text-ink/85">{r.body}</p>
               </div>
             </li>
           ))}
@@ -288,7 +301,7 @@ export function HowSteps({ compact = false }: { compact?: boolean }) {
                   <h3 className="text-lg">
                     <span className="text-gold-dark">{i + 1}.</span> {s.title}
                   </h3>
-                  <p className="mt-1 text-[16px] text-ink/85">{s.body}</p>
+                  <p className="mt-1 text-[19px] text-ink/85">{s.body}</p>
                 </div>
               </li>
             );

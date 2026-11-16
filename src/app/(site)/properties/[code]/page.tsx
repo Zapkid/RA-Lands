@@ -142,7 +142,7 @@ export default async function ParcelPage({ params }: Props) {
               {facts
                 .filter(([, v]) => v)
                 .map(([k, v]) => (
-                  <div key={k} className="grid grid-cols-[9rem_1fr] gap-4 px-4 py-3 text-[16px] sm:grid-cols-[12rem_1fr]">
+                  <div key={k} className="grid grid-cols-[9rem_1fr] gap-4 px-4 py-3 text-[19px] sm:grid-cols-[12rem_1fr]">
                     <dt className="font-bold text-sage-deep">{k}</dt>
                     <dd>{v}</dd>
                   </div>
@@ -190,7 +190,7 @@ export default async function ParcelPage({ params }: Props) {
             {hasFinancing(parcel) ? (
               <div className="mt-5 rounded-lg bg-white p-4">
                 <h2 className="mb-2 text-base">Financing available</h2>
-                <dl className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-[15px]">
+                <dl className="grid grid-cols-2 gap-x-4 gap-y-1.5 text-[18px]">
                   {parcel.down_payment != null ? (
                     <>
                       <dt className="text-ink/70">Down payment</dt>
@@ -225,7 +225,7 @@ export default async function ParcelPage({ params }: Props) {
 
           <div className="rounded-xl border border-line p-6">
             <h2 className="mb-1 text-xl">{sold ? "Looking for something similar?" : "Interested in this property?"}</h2>
-            <p className="mb-5 text-[15px] text-ink/80">
+            <p className="mb-5 text-[18px] text-ink/80">
               {sold
                 ? "This one is sold, but we may have similar land. Send us a note."
                 : "Send us your questions, or call "}

@@ -4,10 +4,10 @@
  * stock photos it has no rights to.
  */
 const PALETTES = [
-  { sky: "#eef1ec", far: "#d9dfcf", mid: "#e6d4a8", near: "#b7c3a5", sun: "#f1d58c" },
-  { sky: "#f6efdc", far: "#e6d4a8", mid: "#c9b27a", near: "#7f8f73", sun: "#c39a45" },
-  { sky: "#e4ebf2", far: "#b9c8d8", mid: "#a9b79a", near: "#55654a", sun: "#f6efdc" },
-  { sky: "#f3e6d6", far: "#e0c3a0", mid: "#c98f5e", near: "#a8622f", sun: "#fff4d6" },
+  { sky: "#f3ead8", far: "#c9d2e0", mid: "#e8dcc2", near: "#3d5a85", sun: "#d9a273" },
+  { sky: "#f6efe0", far: "#e8dcc2", mid: "#c98b5a", near: "#a0602f", sun: "#12294d" },
+  { sky: "#dde5f0", far: "#a8b8d0", mid: "#3d5a85", near: "#12294d", sun: "#f6efe0" },
+  { sky: "#f3e6d6", far: "#e0c3a0", mid: "#c98b5a", near: "#12294d", sun: "#fff4d6" },
 ] as const;
 
 export function LandscapeArt({

@@ -5,7 +5,7 @@ import { SITE } from "@/lib/site";
 
 export const revalidate = 3600;
 
-const PAGES = ["", "/about", "/how-it-works", "/properties", "/faq", "/contact", "/privacy"];
+const PAGES = ["", "/about", "/how-it-works", "/properties", "/faq", "/sell-my-land", "/contact", "/privacy"];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const parcels = await getPublishedParcels();

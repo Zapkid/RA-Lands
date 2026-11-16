@@ -1,5 +1,5 @@
 // Form endpoint for the consultation form, parcel inquiries and the
-// newsletter signup: validates the submission and emails it to the site
+// "Sell my land" form: validates the submission and emails it to the site
 // owner through the SMTP2GO HTTP API. Nothing is stored.
 //
 // Required environment variables (set in Vercel, never in the repo):
@@ -68,7 +68,7 @@ export async function POST(request: Request) {
     return Response.json({ ok: true });
   }
 
-  const kind = body.kind === "newsletter" || body.kind === "parcel" ? body.kind : "consultation";
+  const kind = body.kind === "sell" || body.kind === "parcel" ? body.kind : "consultation";
   const email = oneLine(body.email, 200);
   if (!EMAIL_RE.test(email)) {
     return Response.json({ ok: false, error: "Please enter a valid email address." }, { status: 400 });
@@ -79,9 +79,39 @@ export async function POST(request: Request) {
   let message = "";
   let replyName = "";
 
-  if (kind === "newsletter") {
-    subject = "New deal-alert signup";
-    rows = [["Email", email]];
+  if (kind === "sell") {
+    const name = oneLine(body.name, 120);
+    if (!name) {
+      return Response.json({ ok: false, error: "Please enter your name." }, { status: 400 });
+    }
+    replyName = name;
+    const f = (k: string, max = 200) => oneLine(body[k], max) || "-";
+    const consent = body.consent === true;
+    if (!consent) {
+      return Response.json({ ok: false, error: "Please confirm you are the owner or authorized to sell." }, { status: 400 });
+    }
+    message = multiLine(body.notes, 5000);
+    subject = `Sell my land: ${f("county")}, ${f("state")} (${name})`;
+    rows = [
+      ["Name", name],
+      ["Email", email],
+      ["Phone", f("phone", 40)],
+      ["Preferred contact", f("contactMethod", 40)],
+      ["Ownership", f("ownership", 60)],
+      ["Property address / location", f("address")],
+      ["County", f("county")],
+      ["State", f("state")],
+      ["Parcel number (APN)", f("apn", 80)],
+      ["Acreage", f("acreage", 40)],
+      ["Asking price", f("askingPrice", 60)],
+      ["Property type", f("propertyType", 60)],
+      ["Road access", f("access", 60)],
+      ["Utilities", f("utilities", 200)],
+      ["Taxes current", f("taxes", 60)],
+      ["Liens or mortgage", f("liens", 60)],
+      ["Timeline", f("timeline", 60)],
+      ["How they heard of us", f("source", 80)],
+    ];
   } else {
     const name = oneLine(body.name, 120);
     message = multiLine(body.message, 5000);
@@ -141,7 +171,7 @@ export async function POST(request: Request) {
         text_body: text,
         html_body: html,
         custom_headers: [
-          { header: "Reply-To", value: `${(replyName || "Subscriber").replace(/[<>",]/g, "")} <${email}>` },
+          { header: "Reply-To", value: `${(replyName || "Visitor").replace(/[<>",]/g, "")} <${email}>` },
         ],
       }),
     });

@@ -44,7 +44,7 @@ export default function AboutPage() {
           </div>
           <aside className="rounded-xl bg-sage-pale p-7">
             <h2 className="mb-4 text-2xl">What you can expect</h2>
-            <ul className="space-y-3 text-[16px] text-ink/90">
+            <ul className="space-y-3 text-[19px] text-ink/90">
               {[
                 "Clear listings with the details that matter",
                 "Transparent pricing and financing terms shown upfront",

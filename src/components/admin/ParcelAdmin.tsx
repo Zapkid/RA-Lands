@@ -475,12 +475,12 @@ export function ParcelAdmin({ initialParcels, email }: { initialParcels: ParcelR
                     {p.code} · {p.county}, {p.state} · {formatAcreage(p.acreage)} · {formatPrice(p.price)}
                   </p>
                 </div>
-                <span className={clsx("rounded-full px-2.5 py-1 text-[11px] font-bold uppercase", STATUS_BADGE[p.status])}>
+                <span className={clsx("rounded-full px-2.5 py-1 text-[14px] font-bold uppercase", STATUS_BADGE[p.status])}>
                   {STATUS_LABEL[p.status]}
                 </span>
                 <span
                   className={clsx(
-                    "rounded-full px-2.5 py-1 text-[11px] font-bold uppercase",
+                    "rounded-full px-2.5 py-1 text-[14px] font-bold uppercase",
                     p.is_active ? "bg-emerald-100 text-emerald-800" : "bg-stone-200 text-stone-700",
                   )}
                 >
@@ -655,7 +655,7 @@ export function ParcelAdmin({ initialParcels, email }: { initialParcels: ParcelR
                         {/* eslint-disable-next-line @next/next/no-img-element */}
                         <img src={photoUrl(path)} alt="" className="h-full w-full object-cover" />
                         {idx === 0 ? (
-                          <span className="absolute top-1.5 left-1.5 rounded-full bg-sage-deep px-2 py-0.5 text-[10px] font-bold text-white uppercase">
+                          <span className="absolute top-1.5 left-1.5 rounded-full bg-sage-deep px-2 py-0.5 text-[13px] font-bold text-white uppercase">
                             Cover
                           </span>
                         ) : null}

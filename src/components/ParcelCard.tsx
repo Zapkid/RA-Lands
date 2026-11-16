@@ -49,7 +49,7 @@ export function ParcelCard({ parcel, index = 0 }: { parcel: ParcelRow; index?: n
       </div>
 
       <div className="flex flex-1 flex-col gap-3 p-3 pt-4">
-        <h3 className="border-b border-sage-deep pb-2.5 text-[17px] leading-snug font-bold !text-sage-deep">
+        <h3 className="border-b border-sage-deep pb-2.5 text-[20px] leading-snug font-bold !text-sage-deep">
           <Link
             href={parcelPath(parcel.code)}
             className="after:absolute after:inset-0 after:rounded-[10px] focus-visible:after:outline-3 focus-visible:after:outline-gold"
@@ -58,7 +58,7 @@ export function ParcelCard({ parcel, index = 0 }: { parcel: ParcelRow; index?: n
           </Link>
         </h3>
 
-        <ul className="flex flex-col gap-1.5 text-[15px] font-semibold text-sage-deep">
+        <ul className="flex flex-col gap-1.5 text-[18px] font-semibold text-sage-deep">
           <li className="flex items-center gap-2.5">
             <Maximize2 className="h-4 w-4 shrink-0" aria-hidden="true" />
             {formatAcreage(parcel.acreage)}

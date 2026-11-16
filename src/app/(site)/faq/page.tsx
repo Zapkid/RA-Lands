@@ -30,7 +30,7 @@ const FAQ: { q: string; a: string }[] = [
   },
   {
     q: "How do I get a deal alert when new land is listed?",
-    a: "Join the newsletter from the form in the footer of any page. We will email you when new properties become available.",
+    a: "Send us a note from the Contact page describing what you are looking for. We will email you when matching properties become available.",
   },
   {
     q: "How do I contact you?",
@@ -64,7 +64,7 @@ export default function FaqPage() {
                     aria-hidden="true"
                   />
                 </summary>
-                <p className="mt-3 text-[16px] text-ink/90">{f.a}</p>
+                <p className="mt-3 text-[19px] text-ink/90">{f.a}</p>
               </details>
             ))}
           </div>
