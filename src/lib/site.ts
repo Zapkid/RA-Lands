@@ -3,7 +3,7 @@ export const SITE = {
   name: "RA Land Investments LLC",
   shortName: "RA Lands",
   tagline: "Every piece of land has potential. We help you unlock it.",
-  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://ralandinvestments.com").replace(/\/$/, ""),
+  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://ralands.com").replace(/\/$/, ""),
   phone: "984-368-5554",
   phoneHref: "tel:+19843685554",
   email: "info@ralandinvestments.com",
