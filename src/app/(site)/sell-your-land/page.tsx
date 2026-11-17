@@ -82,7 +82,7 @@ export default function SellYourLandPage() {
 
       <section className="py-16 sm:py-20" aria-labelledby="why-sell-heading">
         <div className={container}>
-          <SectionHeading eyebrow="Why sell to us">
+          <SectionHeading>
             <span id="why-sell-heading">Why Sell to Us</span>
           </SectionHeading>
           <ul className="grid gap-6 sm:grid-cols-2">
@@ -106,7 +106,7 @@ export default function SellYourLandPage() {
 
       <section className="bg-sand-soft py-16 sm:py-20" aria-labelledby="sell-how-heading">
         <div className={container}>
-          <SectionHeading eyebrow="Simple and clear">
+          <SectionHeading>
             <span id="sell-how-heading">How It Works</span>
           </SectionHeading>
           <ol className="mx-auto grid max-w-4xl gap-5">
@@ -132,7 +132,7 @@ export default function SellYourLandPage() {
 
       <section id="offer-form" className="scroll-mt-24 py-16 sm:py-20" aria-labelledby="offer-heading">
         <div className={`${container} max-w-3xl`}>
-          <SectionHeading eyebrow="Get started">
+          <SectionHeading>
             <span id="offer-heading">Request My Offer</span>
           </SectionHeading>
           <SellLandForm />
@@ -141,7 +141,7 @@ export default function SellYourLandPage() {
 
       <section className="bg-sage-pale py-16 sm:py-20" aria-labelledby="seller-faq-heading">
         <div className={`${container} max-w-3xl`}>
-          <SectionHeading eyebrow="Questions">
+          <SectionHeading>
             <span id="seller-faq-heading">Questions From Sellers</span>
           </SectionHeading>
           <dl className="grid gap-6">

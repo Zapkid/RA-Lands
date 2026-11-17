@@ -45,12 +45,9 @@ export function PageHeader({ title, intro }: { title: string; intro?: ReactNode 
   );
 }
 
-export function SectionHeading({ children, eyebrow }: { children: ReactNode; eyebrow?: string }) {
+export function SectionHeading({ children }: { children: ReactNode }) {
   return (
     <div className="mb-10 text-center">
-      {eyebrow ? (
-        <p className="mb-2 text-xs font-bold tracking-[0.2em] text-gold-dark uppercase">{eyebrow}</p>
-      ) : null}
       <h2 className="text-balance text-3xl sm:text-4xl">{children}</h2>
     </div>
   );
@@ -92,9 +89,6 @@ export function Hero() {
         </div>
 
         <div className="order-1">
-          <p className="mb-3 text-xs font-bold tracking-[0.2em] text-gold-dark uppercase">
-            Land you can understand. Support you can trust.
-          </p>
           <h1 className="text-balance text-4xl sm:text-5xl lg:text-[56px]">
             Land Ownership, Made Simple and Within Reach
           </h1>
@@ -137,7 +131,7 @@ export async function FeaturedProperties() {
   return (
     <section className="py-16 sm:py-20" aria-labelledby="featured-heading">
       <div className={container}>
-        <SectionHeading eyebrow="Available now">
+        <SectionHeading>
           <span id="featured-heading">Land Available Now</span>
         </SectionHeading>
         {featured.length > 0 ? (
@@ -192,7 +186,7 @@ export function Vetted() {
   return (
     <section className="bg-sand-soft py-16 sm:py-20" aria-labelledby="vetted-heading">
       <div className={container}>
-        <SectionHeading eyebrow="Peace of mind">
+        <SectionHeading>
           <span id="vetted-heading">Every Parcel Vetted. Every Purchase Protected.</span>
         </SectionHeading>
         <ul className="grid gap-6 sm:grid-cols-2">
@@ -222,7 +216,7 @@ export function Services() {
   return (
     <section className="py-16 sm:py-20" aria-labelledby="services-heading">
       <div className={container}>
-        <SectionHeading eyebrow="Independent land advisory">
+        <SectionHeading>
           <span id="services-heading">Helping You See What Your Land Can Become</span>
         </SectionHeading>
         <ol className="grid gap-8 md:grid-cols-3">
@@ -278,7 +272,7 @@ export function WhyChoose() {
   return (
     <section className="py-16 sm:py-20" aria-labelledby="why-heading">
       <div className={container}>
-        <SectionHeading eyebrow="Why choose us">
+        <SectionHeading>
           <span id="why-heading">Why Choose Us</span>
         </SectionHeading>
         <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -333,7 +327,7 @@ export function HowSteps({ compact = false }: { compact?: boolean }) {
   return (
     <section className={"py-16 sm:py-20"} aria-labelledby="how-heading">
       <div className={container}>
-        <SectionHeading eyebrow="Simple and clear">
+        <SectionHeading>
           <span id="how-heading">How It Works</span>
         </SectionHeading>
         <p className="mx-auto -mt-4 mb-10 max-w-2xl text-center text-lg text-ink/85">
