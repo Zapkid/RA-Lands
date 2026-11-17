@@ -33,7 +33,7 @@ export default function PrivacyPage() {
             <li>Sell your land form: your contact details and the details of the land you describe.</li>
           </ul>
           <p>
-            Form submissions are delivered to us by email. We use them to reply to you. We do not sell your information.
+            Form submissions are delivered to us by email. We use them to reply to you and, if you join the mailing list, to tell you when new properties are available. We do not sell your information.
           </p>
 
           <h2>Cookies and tracking</h2>

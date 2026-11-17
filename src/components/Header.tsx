@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Menu, Phone, X } from "lucide-react";
 import { clsx } from "clsx";
 import { Logo } from "./Logo";
+import { NewsletterButton } from "./NewsletterButton";
 import { btnGold, container } from "./ui";
 import { NAV, SITE } from "@/lib/site";
 
@@ -45,7 +46,7 @@ export function Header() {
           </ul>
         </nav>
 
-        <div className="hidden items-center gap-6 xl:flex">
+        <div className="hidden items-center gap-4 xl:flex">
           <a href={SITE.phoneHref} className="hidden items-center whitespace-nowrap 2xl:flex gap-2.5 text-sage-deep hover:text-gold-dark">
             <Phone className="h-6 w-6" aria-hidden="true" />
             <span className="leading-tight">
@@ -53,9 +54,10 @@ export function Header() {
               <span className="block text-base font-bold text-navy">{SITE.phone}</span>
             </span>
           </a>
-          <Link href="/sell-your-land" className={`${btnGold} whitespace-nowrap`}>
-            Sell Us Your Land
+          <Link href="/properties" className={`${btnGold} whitespace-nowrap !px-4 !py-2.5 !text-[14px]`}>
+            View Available Land
           </Link>
+          <NewsletterButton />
         </div>
 
         <button
@@ -91,9 +93,10 @@ export function Header() {
               <a href={SITE.phoneHref} className="font-bold text-navy">
                 Call {SITE.phone}
               </a>
-              <Link href="/sell-your-land" className="font-bold text-gold-dark">
-                Sell Us Your Land
+              <Link href="/properties" className="font-bold text-gold-dark">
+                View Available Land
               </Link>
+              <NewsletterButton className="font-bold" />
             </li>
           </ul>
         </nav>

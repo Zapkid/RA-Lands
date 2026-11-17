@@ -55,6 +55,7 @@ export function SellLandForm() {
           source: get("source"),
           notes: get("notes"),
           consent: get("consent") === "on",
+          mailingList: get("mailingList") === "on",
           website: get("website"),
         }),
       });
@@ -166,6 +167,10 @@ export function SellLandForm() {
         <label className="flex items-start gap-3 text-base">
           <input type="checkbox" name="consent" required className="mt-1.5 h-5 w-5 shrink-0 accent-[#a0602f]" />
           <span>I am the owner of this land, or authorized to sell it, and agree to be contacted about it. *</span>
+        </label>
+        <label className="flex items-start gap-3 text-base">
+          <input type="checkbox" name="mailingList" className="mt-1.5 h-5 w-5 shrink-0 accent-[#a0602f]" />
+          <span>Add me to the mailing list for new property alerts.</span>
         </label>
         <div className="flex flex-wrap items-center gap-4">
           <button type="submit" disabled={state.kind === "sending"} className={btnGold}>

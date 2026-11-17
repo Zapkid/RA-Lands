@@ -20,8 +20,8 @@ import {
 import type { ReactNode } from "react";
 import { ParcelCard } from "./ParcelCard";
 import { btnGold, btnOutline, btnOutlineLight, btnSage, container } from "./ui";
-import { getPublishedParcels } from "@/lib/parcels-data";
 import { SERVICES } from "@/lib/site";
+import { getPublishedParcels } from "@/lib/parcels-data";
 
 /** Title band used at the top of inner pages. */
 export function PageHeader({ title, intro }: { title: string; intro?: ReactNode }) {
@@ -99,16 +99,17 @@ export function Hero() {
             Land Ownership, Made Simple and Within Reach
           </h1>
           <p className="mt-5 max-w-xl text-lg text-ink/85">
-            We offer hand-picked parcels at honest prices, with flexible payment options. Every property we list
-            is owned directly by us and has passed due diligence. And because we study land for a living, we will
-            tell you what a parcel can realistically be used for before you decide.
+            We offer carefully selected land at fair prices, with flexible payment options. Most of the properties
+            we feature are owned directly by us and have been carefully reviewed before being offered for sale. We
+            believe in providing clear, honest information about each property, including its potential uses, so
+            you can make an informed decision with confidence.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/properties" className={btnGold}>
-              Browse Land
+              Browse Available Land
             </Link>
-            <Link href="/contact" className={btnOutline}>
-              Book a Free Consultation
+            <Link href="/sell-your-land" className={btnOutline}>
+              Sell Us Your Land
             </Link>
           </div>
         </div>
@@ -164,13 +165,11 @@ export async function FeaturedProperties() {
 
 /* ---------- Advisory services ---------- */
 
-const SERVICE_ICONS = [Layers, Mountain, ClipboardCheck];
-
 const PROTECTIONS = [
   {
     icon: ShieldCheck,
-    title: "Verified and Owned by Us",
-    body: "Every property we show is owned directly by us and has passed full due diligence.",
+    title: "Owned or Carefully Reviewed",
+    body: "Every property we offer is either owned directly by us or has been carefully reviewed before being listed. We believe in providing clear and reliable information so you can make an informed purchase.",
   },
   {
     icon: CalendarClock,
@@ -179,8 +178,8 @@ const PROTECTIONS = [
   },
   {
     icon: BadgeCheck,
-    title: "A Guarantee on Every Offer",
-    body: "Purchases made on a payment plan are backed by a guarantee. If it is not right for you, your money comes back, excluding the documentation fees already paid. Guarantee terms are stated in each offer.",
+    title: "Buy With Confidence",
+    body: "Purchases made through our owner-financing plans include a 60-day money-back guarantee on eligible properties, giving you added peace of mind. All terms and conditions are clearly outlined before purchase.",
   },
   {
     icon: Receipt,
@@ -212,13 +211,12 @@ export function Vetted() {
             );
           })}
         </ul>
-        <p className="mx-auto mt-10 max-w-3xl text-center text-lg font-semibold text-navy">
-          Plus, independent land advisory for owners, builders and investors, even if you do not buy from us.
-        </p>
       </div>
     </section>
   );
 }
+
+const SERVICE_ICONS = [Layers, Mountain, ClipboardCheck];
 
 export function Services() {
   return (
@@ -381,7 +379,7 @@ export function SellTeaser() {
           Own Land You Would Like to Sell? Let&apos;s Talk.
         </h2>
         <p className="mx-auto mt-4 max-w-2xl text-lg text-ink/85">
-          We buy land directly from owners. No agents, no listing fees, and no waiting around for a buyer.
+          We buy land directly from owners. No agents, no listing fees, and no waiting around for a buyer. We take care of the property checks and administrative steps involved in transferring ownership, making the selling process simple and hassle-free for you.
         </p>
         <div className="mt-8">
           <Link href="/sell-your-land" className={btnGold}>
@@ -401,11 +399,11 @@ export function CtaBand() {
       <div className={container}>
         <h2 className="text-balance text-3xl !text-white sm:text-4xl">Buy Land With Peace of Mind</h2>
         <p className="mx-auto mt-4 max-w-xl text-lg text-white/85">
-          Straightforward listings, fair prices, and zero pressure.
+          Clear listings, fair prices, and no pressure.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link href="/properties" className={btnGold}>
-            See Available Land
+            View Available Land
           </Link>
           <Link href="/contact" className={btnOutlineLight}>
             Get in Touch

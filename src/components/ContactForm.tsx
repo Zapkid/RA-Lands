@@ -6,13 +6,7 @@ import { btnGold } from "./ui";
 import { SITE } from "@/lib/site";
 
 export const FORM_ROLES = ["Landowner", "Future builder", "Investor", "Other"] as const;
-export const FORM_SERVICES = [
-  "Buying a property",
-  "Land Use & Feasibility Analysis",
-  "Navigating Terrain & Infrastructure",
-  "Strategic Planning & Due Diligence",
-  "Not sure yet",
-] as const;
+export const FORM_SERVICES = ["Buyer", "Seller", "Want to find out more", "Other"] as const;
 
 type Props = {
   /** "parcel" is the short "I'm interested in this property" form. */
@@ -50,6 +44,7 @@ export function ContactForm({ variant = "consultation", parcel }: Props) {
           message: d.get("message"),
           parcelCode: parcel?.code,
           parcelName: parcel?.name,
+          mailingList: d.get("mailingList") === "on",
           website: d.get("website"),
         }),
       });
@@ -104,7 +99,7 @@ export function ContactForm({ variant = "consultation", parcel }: Props) {
             <label htmlFor={id("service")} className="mb-1.5 block text-sm font-bold text-olive">
               What can we help with?
             </label>
-            <select id={id("service")} name="service" className={field} defaultValue="Not sure yet">
+            <select id={id("service")} name="service" className={field} defaultValue="Buyer">
               {FORM_SERVICES.map((s) => (
                 <option key={s}>{s}</option>
               ))}
@@ -150,6 +145,10 @@ export function ContactForm({ variant = "consultation", parcel }: Props) {
       />
 
       <div className="flex flex-col gap-3 sm:col-span-2">
+        <label className="flex items-start gap-3 text-base">
+          <input type="checkbox" name="mailingList" className="mt-1.5 h-5 w-5 shrink-0 accent-[#a0602f]" />
+          <span>Add me to the mailing list for new property alerts.</span>
+        </label>
         <p className="text-sm text-ink/75">
           By sending this form you agree to our{" "}
           <Link href="/privacy" className="font-semibold text-sage-deep underline">

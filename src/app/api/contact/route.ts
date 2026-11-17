@@ -12,13 +12,7 @@
 const SMTP2GO_URL = "https://api.smtp2go.com/v3/email/send";
 
 const ROLES = ["Landowner", "Future builder", "Investor", "Other"];
-const SERVICES = [
-  "Buying a property",
-  "Land Use & Feasibility Analysis",
-  "Navigating Terrain & Infrastructure",
-  "Strategic Planning & Due Diligence",
-  "Not sure yet",
-];
+const SERVICES = ["Buyer", "Seller", "Want to find out more", "Other"];
 
 const escapeHtml = (s: string) =>
   s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
@@ -68,7 +62,7 @@ export async function POST(request: Request) {
     return Response.json({ ok: true });
   }
 
-  const kind = body.kind === "sell" || body.kind === "parcel" ? body.kind : "consultation";
+  const kind = body.kind === "sell" || body.kind === "parcel" || body.kind === "newsletter" ? body.kind : "consultation";
   const email = oneLine(body.email, 200);
   if (!EMAIL_RE.test(email)) {
     return Response.json({ ok: false, error: "Please enter a valid email address." }, { status: 400 });
@@ -79,7 +73,12 @@ export async function POST(request: Request) {
   let message = "";
   let replyName = "";
 
-  if (kind === "sell") {
+  const mailingList = body.mailingList === true;
+
+  if (kind === "newsletter") {
+    subject = "Mailing list signup";
+    rows = [["Email", email], ["Mailing list", "Yes - please add"]];
+  } else if (kind === "sell") {
     const name = oneLine(body.name, 120);
     if (!name) {
       return Response.json({ ok: false, error: "Please enter your name." }, { status: 400 });
@@ -135,11 +134,13 @@ export async function POST(request: Request) {
       rows.push(["Property", `${pname || "-"} (${code || "-"})`]);
     } else {
       const role = ROLES.includes(body.role as string) ? (body.role as string) : "Other";
-      const service = SERVICES.includes(body.service as string) ? (body.service as string) : "Not sure yet";
+      const service = SERVICES.includes(body.service as string) ? (body.service as string) : "Other";
       subject = `New consultation request from ${name}`;
-      rows.push(["I am a", role], ["Interested in", service], ["Property location", oneLine(body.location, 200) || "-"]);
+      rows.push(["I am a", role], ["I want to", service], ["Property location", oneLine(body.location, 200) || "-"]);
     }
   }
+
+  if (kind !== "newsletter") rows.push(["Join mailing list", mailingList ? "Yes" : "No"]);
 
   const apiKey = process.env.SMTP2GO_API_KEY;
   const from = process.env.CONTACT_FROM_EMAIL;
@@ -171,7 +172,7 @@ export async function POST(request: Request) {
         text_body: text,
         html_body: html,
         custom_headers: [
-          { header: "Reply-To", value: `${(replyName || "Visitor").replace(/[<>",]/g, "")} <${email}>` },
+          { header: "Reply-To", value: `${(replyName || "Subscriber").replace(/[<>",]/g, "")} <${email}>` },
         ],
       }),
     });
