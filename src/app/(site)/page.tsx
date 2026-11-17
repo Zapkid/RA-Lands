@@ -1,4 +1,4 @@
-import { CtaBand, FeaturedProperties, Hero, HowSteps, Services, WhyChoose } from "@/components/sections";
+import { CtaBand, FeaturedProperties, Hero, HowSteps, SellTeaser, Services, Vetted, WhyChoose } from "@/components/sections";
 
 // Listings change from the admin; saving there revalidates this page. The
 // hourly refresh is only a safety net.
@@ -10,8 +10,10 @@ export default function HomePage() {
       <Hero />
       <FeaturedProperties />
       <WhyChoose />
+      <Vetted />
       <Services />
       <HowSteps compact />
+      <SellTeaser />
       <CtaBand />
     </>
   );

@@ -53,8 +53,8 @@ export function Header() {
               <span className="block text-base font-bold text-navy">{SITE.phone}</span>
             </span>
           </a>
-          <Link href="/sell-my-land" className={`${btnGold} whitespace-nowrap`}>
-            Sell my land
+          <Link href="/sell-your-land" className={`${btnGold} whitespace-nowrap`}>
+            Sell Us Your Land
           </Link>
         </div>
 
@@ -91,8 +91,8 @@ export function Header() {
               <a href={SITE.phoneHref} className="font-bold text-navy">
                 Call {SITE.phone}
               </a>
-              <Link href="/sell-my-land" className="font-bold text-gold-dark">
-                Sell my land
+              <Link href="/sell-your-land" className="font-bold text-gold-dark">
+                Sell Us Your Land
               </Link>
             </li>
           </ul>

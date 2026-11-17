@@ -1,5 +1,5 @@
 // Form endpoint for the consultation form, parcel inquiries and the
-// "Sell my land" form: validates the submission and emails it to the site
+// "Sell your land" form: validates the submission and emails it to the site
 // owner through the SMTP2GO HTTP API. Nothing is stored.
 //
 // Required environment variables (set in Vercel, never in the repo):
@@ -91,7 +91,7 @@ export async function POST(request: Request) {
       return Response.json({ ok: false, error: "Please confirm you are the owner or authorized to sell." }, { status: 400 });
     }
     message = multiLine(body.notes, 5000);
-    subject = `Sell my land: ${f("county")}, ${f("state")} (${name})`;
+    subject = `Sell your land: ${f("county")}, ${f("state")} (${name})`;
     rows = [
       ["Name", name],
       ["Email", email],

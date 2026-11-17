@@ -9,7 +9,7 @@ const LINKS = [
   { href: "/about", label: "About Us" },
   { href: "/properties", label: "Properties" },
   { href: "/how-it-works", label: "How It Works" },
-  { href: "/sell-my-land", label: "Sell My Land" },
+  { href: "/sell-your-land", label: "Sell Your Land" },
   { href: "/contact", label: "Contact" },
 ] as const;
 
@@ -22,7 +22,7 @@ export function Footer() {
             <Logo className="w-[180px]" />
           </span>
           <p className="max-w-xs text-[18px] text-olive/90">
-            Clear, simple land ownership, backed by independent advisory and a pressure-free process.
+            Simple land ownership, with expert guidance and no pressure.
           </p>
         </div>
 

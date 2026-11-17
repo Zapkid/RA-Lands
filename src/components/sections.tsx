@@ -10,8 +10,12 @@ import {
   Layers,
   Map as MapIcon,
   Mountain,
+  Receipt,
   Search,
+  ShieldCheck,
   Sprout,
+  BadgeCheck,
+  CalendarClock,
 } from "lucide-react";
 import type { ReactNode } from "react";
 import { ParcelCard } from "./ParcelCard";
@@ -89,21 +93,22 @@ export function Hero() {
 
         <div className="order-1">
           <p className="mb-3 text-xs font-bold tracking-[0.2em] text-gold-dark uppercase">
-            Land investments &amp; advisory
+            Land you can understand. Support you can trust.
           </p>
           <h1 className="text-balance text-4xl sm:text-5xl lg:text-[56px]">
-            Your Path to Affordable Land Ownership
+            Land Ownership, Made Simple and Within Reach
           </h1>
           <p className="mt-5 max-w-xl text-lg text-ink/85">
-            RA Land Investments offers carefully selected parcels with transparent pricing and financing options,
-            backed by independent advice so you know exactly what you can do with the land.
+            We offer hand-picked parcels at honest prices, with flexible payment options. Every property we list
+            is owned directly by us and has passed due diligence. And because we study land for a living, we will
+            tell you what a parcel can realistically be used for before you decide.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
             <Link href="/properties" className={btnGold}>
-              View properties
+              Browse Land
             </Link>
-            <Link href="/sell-my-land" className={btnOutline}>
-              Sell my land
+            <Link href="/contact" className={btnOutline}>
+              Book a Free Consultation
             </Link>
           </div>
         </div>
@@ -132,7 +137,7 @@ export async function FeaturedProperties() {
     <section className="py-16 sm:py-20" aria-labelledby="featured-heading">
       <div className={container}>
         <SectionHeading eyebrow="Available now">
-          <span id="featured-heading">Featured Properties</span>
+          <span id="featured-heading">Land Available Now</span>
         </SectionHeading>
         {featured.length > 0 ? (
           <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
@@ -144,12 +149,12 @@ export async function FeaturedProperties() {
           </ul>
         ) : (
           <p className="mx-auto max-w-xl text-center text-ink/80">
-            New properties are coming soon. Tell us what you are looking for and we will let you know as soon as land is listed.
+            Our next listings are on the way. Tell us what you are looking for and we will email you the moment a new parcel goes live.
           </p>
         )}
         <div className="mt-10 text-center">
           <Link href="/properties" className={btnSage}>
-            View more properties
+            View All Properties
           </Link>
         </div>
       </div>
@@ -161,30 +166,77 @@ export async function FeaturedProperties() {
 
 const SERVICE_ICONS = [Layers, Mountain, ClipboardCheck];
 
+const PROTECTIONS = [
+  {
+    icon: ShieldCheck,
+    title: "Verified and Owned by Us",
+    body: "Every property we show is owned directly by us and has passed full due diligence.",
+  },
+  {
+    icon: CalendarClock,
+    title: "Payment Terms That Work for You",
+    body: "Choose what suits you best: pay over time, spread across the number of months you want; pay in cash; or use owner financing (a loan directly from us).",
+  },
+  {
+    icon: BadgeCheck,
+    title: "A Guarantee on Every Offer",
+    body: "Purchases made on a payment plan are backed by a guarantee. If it is not right for you, your money comes back, excluding the documentation fees already paid. Guarantee terms are stated in each offer.",
+  },
+  {
+    icon: Receipt,
+    title: "Low, Transparent Documentation Fees",
+    body: "Our documentation fee is kept low and is always shared with you before you sign. The amount depends on the property.",
+  },
+] as const;
+
+export function Vetted() {
+  return (
+    <section className="bg-sand-soft py-16 sm:py-20" aria-labelledby="vetted-heading">
+      <div className={container}>
+        <SectionHeading eyebrow="Peace of mind">
+          <span id="vetted-heading">Every Parcel Vetted. Every Purchase Protected.</span>
+        </SectionHeading>
+        <ul className="grid gap-6 sm:grid-cols-2">
+          {PROTECTIONS.map((x) => {
+            const Icon = x.icon;
+            return (
+              <li key={x.title} className="flex gap-5 rounded-xl bg-white p-7 shadow-sm">
+                <span className="flex h-14 w-14 shrink-0 items-center justify-center rounded-full bg-gold text-olive">
+                  <Icon className="h-7 w-7" aria-hidden="true" />
+                </span>
+                <div>
+                  <h3 className="mb-2 text-xl">{x.title}</h3>
+                  <p className="text-ink/85">{x.body}</p>
+                </div>
+              </li>
+            );
+          })}
+        </ul>
+        <p className="mx-auto mt-10 max-w-3xl text-center text-lg font-semibold text-navy">
+          Plus, independent land advisory for owners, builders and investors, even if you do not buy from us.
+        </p>
+      </div>
+    </section>
+  );
+}
+
 export function Services() {
   return (
-    <section className="bg-sand-soft py-16 sm:py-20" aria-labelledby="services-heading">
+    <section className="py-16 sm:py-20" aria-labelledby="services-heading">
       <div className={container}>
         <SectionHeading eyebrow="Independent land advisory">
-          <span id="services-heading">Here Is How We Support Your Vision</span>
+          <span id="services-heading">Helping You See What Your Land Can Become</span>
         </SectionHeading>
-        <p className="mx-auto -mt-4 mb-10 max-w-3xl text-center text-lg text-ink/85">
-          Land is more than property. It is a blank canvas, and understanding how to use a parcel takes vision,
-          expertise and proper research. Our advisory service is open to landowners, future builders and
-          investors, whether or not you buy from us.
-        </p>
         <ol className="grid gap-8 md:grid-cols-3">
           {SERVICES.map((s, i) => {
             const Icon = SERVICE_ICONS[i];
             return (
-              <li key={s.title} className="rounded-xl bg-white p-7 text-center shadow-sm">
+              <li key={s.title} className="rounded-xl border border-line bg-white p-7 text-center shadow-sm">
                 <span className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-gold text-olive">
                   <Icon className="h-8 w-8" aria-hidden="true" />
                 </span>
-                <h3 className="mb-3 text-xl">
-                  {i + 1}. {s.title}
-                </h3>
-                <p className="text-[19px] text-ink/85">{s.body}</p>
+                <h3 className="mb-3 text-xl">{s.title}</h3>
+                <p className="text-ink/85">{s.body}</p>
               </li>
             );
           })}
@@ -199,28 +251,28 @@ export function Services() {
 const REASONS = [
   {
     icon: BadgeDollarSign,
-    title: "Financing Options",
-    body: "Selected parcels offer simple monthly payments. The terms are shown on each listing before you ask a question.",
+    title: "Pay Over Time",
+    body: "Spread your payments over the number of months you choose, pay in cash, or use owner financing. The terms are shown before you sign.",
   },
   {
     icon: Search,
-    title: "Transparent Pricing",
-    body: "The price on the listing is the price we discuss. Details such as acreage, access and zoning are laid out up front.",
+    title: "Honest Numbers",
+    body: "The listed price is the price we discuss. Size, access and zoning are spelled out before you ever reach out.",
   },
   {
     icon: Compass,
-    title: "Independent Advice",
-    body: "We evaluate land for a living, so we can explain what a parcel is realistically good for, not just what it costs.",
+    title: "Expertise You Can Lean On",
+    body: "Evaluating land is our daily work. We will tell you what a parcel is realistically suited for, not just what it costs.",
   },
   {
     icon: Handshake,
-    title: "Direct, Personal Service",
-    body: "You deal with our team directly. Call, email or send a message and a person answers.",
+    title: "A Real Person, Every Time",
+    body: "Call, email or message us and you will hear back from our own team, with no call centers and no runaround.",
   },
   {
     icon: Sprout,
-    title: "Curated Properties",
-    body: "A focused selection of land worth your attention rather than an endless list.",
+    title: "Fewer Listings, Better Land",
+    body: "We would rather show you a handful of parcels worth your time than hundreds you have to sort through.",
   },
 ] as const;
 
@@ -229,7 +281,7 @@ export function WhyChoose() {
     <section className="py-16 sm:py-20" aria-labelledby="why-heading">
       <div className={container}>
         <SectionHeading eyebrow="Why choose us">
-          <span id="why-heading">Why Choose RA Lands</span>
+          <span id="why-heading">Why Choose Us</span>
         </SectionHeading>
         <ol className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {REASONS.map((r, i) => (
@@ -254,40 +306,40 @@ export function WhyChoose() {
 const STEPS = [
   {
     icon: MapIcon,
-    title: "Explore the Land",
-    body: "Browse the available properties and contact us with any questions about location, access, zoning or possible uses.",
+    title: "Find Your Parcel",
+    body: "Browse our listings and ask us anything about location, access, zoning or intended use.",
   },
   {
     icon: Landmark,
-    title: "Choose Your Purchase Option",
-    body: "Pay in full or, where a listing offers it, use monthly financing. Terms vary by property and are explained upfront.",
+    title: "Choose How You Would Like to Pay",
+    body: "Pay in cash, spread your payments over the number of months you prefer, or use owner financing. All terms are explained before you sign.",
   },
   {
     icon: FileSignature,
-    title: "Review & Sign the Agreement",
-    body: "We send a clear purchase agreement that sets out the price, payment terms and property details for you to review and sign.",
+    title: "Sign Your Agreement",
+    body: "You will receive a plain-language agreement with the price, payment terms and property details to read through and sign.",
   },
   {
     icon: ClipboardCheck,
-    title: "Paperwork & Payment",
-    body: "We handle the required paperwork according to the agreed structure.",
+    title: "We Handle the Paperwork",
+    body: "Our team takes care of the documents according to the structure you chose.",
   },
   {
     icon: KeyRound,
-    title: "Deed Transfer",
-    body: "Once the balance is paid in full, the deed is recorded in your name and delivered for your records.",
+    title: "The Deed Is Yours",
+    body: "Once your final payment is made, the deed is recorded in your name and sent to you.",
   },
 ] as const;
 
 export function HowSteps({ compact = false }: { compact?: boolean }) {
   return (
-    <section className={compact ? "bg-sage-pale py-16 sm:py-20" : "py-16 sm:py-20"} aria-labelledby="how-heading">
+    <section className={"py-16 sm:py-20"} aria-labelledby="how-heading">
       <div className={container}>
         <SectionHeading eyebrow="Simple and clear">
           <span id="how-heading">How It Works</span>
         </SectionHeading>
         <p className="mx-auto -mt-4 mb-10 max-w-2xl text-center text-lg text-ink/85">
-          Buying land should be straightforward. Our process keeps every step simple and transparent.
+          Buying land should be simple. Here is how it goes, step by step.
         </p>
         <ol className="mx-auto grid max-w-4xl gap-5">
           {STEPS.map((s, i) => {
@@ -310,10 +362,32 @@ export function HowSteps({ compact = false }: { compact?: boolean }) {
         {compact ? (
           <div className="mt-10 text-center">
             <Link href="/how-it-works" className={btnOutline}>
-              Learn more
+              Learn More
             </Link>
           </div>
         ) : null}
+      </div>
+    </section>
+  );
+}
+
+/* ---------- Sell your land teaser ---------- */
+
+export function SellTeaser() {
+  return (
+    <section className="bg-sage-pale py-16 text-center sm:py-20" aria-labelledby="sell-teaser-heading">
+      <div className={container}>
+        <h2 id="sell-teaser-heading" className="text-balance text-3xl sm:text-4xl">
+          Own Land You Would Like to Sell? Let&apos;s Talk.
+        </h2>
+        <p className="mx-auto mt-4 max-w-2xl text-lg text-ink/85">
+          We buy land directly from owners. No agents, no listing fees, and no waiting around for a buyer.
+        </p>
+        <div className="mt-8">
+          <Link href="/sell-your-land" className={btnGold}>
+            Sell Us Your Land
+          </Link>
+        </div>
       </div>
     </section>
   );
@@ -325,16 +399,16 @@ export function CtaBand() {
   return (
     <section className="bg-olive py-16 text-center text-white sm:py-20">
       <div className={container}>
-        <h2 className="text-balance text-3xl !text-white sm:text-4xl">Own Land With Confidence</h2>
+        <h2 className="text-balance text-3xl !text-white sm:text-4xl">Buy Land With Peace of Mind</h2>
         <p className="mx-auto mt-4 max-w-xl text-lg text-white/85">
-          Clear listings, fair pricing and a pressure-free process.
+          Straightforward listings, fair prices, and zero pressure.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link href="/properties" className={btnGold}>
-            View available land
+            See Available Land
           </Link>
           <Link href="/contact" className={btnOutlineLight}>
-            Talk to us
+            Get in Touch
           </Link>
         </div>
       </div>

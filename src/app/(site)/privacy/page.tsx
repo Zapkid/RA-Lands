@@ -30,7 +30,7 @@ export default function PrivacyPage() {
           <p>We only collect what you choose to send us through our forms:</p>
           <ul>
             <li>Contact and property inquiry forms: your name, email, optional phone number, and your message.</li>
-            <li>Sell my land form: your contact details and the details of the land you describe.</li>
+            <li>Sell your land form: your contact details and the details of the land you describe.</li>
           </ul>
           <p>
             Form submissions are delivered to us by email. We use them to reply to you. We do not sell your information.

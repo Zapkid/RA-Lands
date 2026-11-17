@@ -143,15 +143,15 @@ export function PropertiesBrowser({ parcels }: { parcels: ParcelRow[] }) {
       ) : (
         <div className="mt-8 rounded-xl border border-dashed border-sage px-6 py-14 text-center">
           <h2 className="text-2xl">
-            {parcels.length === 0 ? "New properties are coming soon" : "No properties match those filters"}
+            {parcels.length === 0 ? "New Listings Are on the Way" : "No properties match those filters"}
           </h2>
           <p className="mx-auto mt-3 max-w-lg text-ink/80">
             {parcels.length === 0
-              ? "Tell us what you are looking for and we will reach out the moment new land is listed."
+              ? "Tell us what you are searching for and we will keep an eye out, and let you know as soon as new land goes up."
               : "Try widening the filters, or tell us what you are looking for and we will keep an eye out."}
           </p>
           <Link href="/contact" className={`${btnGold} mt-6`}>
-            Tell us what you need
+            Share What You Are Looking For
           </Link>
         </div>
       )}

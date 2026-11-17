@@ -16,8 +16,8 @@ export default async function PropertiesPage() {
   return (
     <>
       <PageHeader
-        title="Available Properties"
-        intro="Filter by state, size and price. Every listing shows the details that matter before you ask a question."
+        title="Land for Sale"
+        intro="Narrow it down by state, size or price. Every listing gives you the key facts upfront."
       />
       <PropertiesBrowser parcels={parcels} />
     </>

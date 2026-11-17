@@ -61,7 +61,7 @@ export function SellLandForm() {
       const json = await res.json().catch(() => null);
       if (!res.ok || !json?.ok) throw new Error(json?.error || "Request failed");
       form.reset();
-      setState({ kind: "ok", text: "Thank you! We received your land details and will be in touch shortly." });
+      setState({ kind: "ok", text: "Thank you. We have received your details and will be in touch soon." });
     } catch {
       setState({
         kind: "error",
@@ -107,7 +107,7 @@ export function SellLandForm() {
   const legend = "mb-4 border-b border-line pb-2 text-xl font-bold text-navy";
 
   return (
-    <form onSubmit={onSubmit} className="grid gap-10" aria-label="Sell my land">
+    <form onSubmit={onSubmit} className="grid gap-10" aria-label="Request my offer">
       <fieldset className="grid gap-4 sm:grid-cols-2">
         <legend className={`${legend} col-span-full w-full`}>1. About you</legend>
         {input("name", "Full name", { required: true })}
@@ -169,7 +169,7 @@ export function SellLandForm() {
         </label>
         <div className="flex flex-wrap items-center gap-4">
           <button type="submit" disabled={state.kind === "sending"} className={btnGold}>
-            {state.kind === "sending" ? "Sending…" : "Send my land details"}
+            {state.kind === "sending" ? "Sending…" : "Request My Offer"}
           </button>
           <p
             role="status"
