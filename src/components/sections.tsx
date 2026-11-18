@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import {
   BadgeDollarSign,
@@ -55,28 +56,17 @@ export function SectionHeading({ children }: { children: ReactNode }) {
 
 /* ---------- Home hero ---------- */
 
-function HeroIllustration() {
+function HeroImage() {
   return (
-    <svg
-      viewBox="0 0 520 440"
-      className="mx-auto h-auto w-full max-w-[540px] rounded-3xl shadow-xl"
-      role="presentation"
-    >
-      <defs>
-        <linearGradient id="hero-sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stopColor="#0d1f3c" />
-          <stop offset="0.6" stopColor="#1d3a68" />
-          <stop offset="1" stopColor="#c98b5a" />
-        </linearGradient>
-      </defs>
-      <rect width="520" height="440" fill="url(#hero-sky)" />
-      <circle cx="380" cy="190" r="58" fill="#f3ead8" opacity="0.95" />
-      <path d="M0 250 L90 170 L170 240 L260 150 L360 245 L440 190 L520 250 L520 440 L0 440Z" fill="#12294d" opacity="0.75" />
-      <path d="M0 300 C90 260 190 270 280 300 S430 310 520 270 L520 440 L0 440Z" fill="#a0602f" />
-      <path d="M0 355 C110 320 210 335 300 358 S440 368 520 340 L520 440 L0 440Z" fill="#e8dcc2" />
-      <path d="M0 405 C120 385 230 392 330 405 S460 412 520 398 L520 440 L0 440Z" fill="#f6efe0" />
-      <path d="M255 440 C262 400 280 380 320 360" stroke="#a0602f" strokeWidth="3" fill="none" strokeDasharray="8 8" />
-    </svg>
+    <Image
+      src="/hero.jpg"
+      alt="Desert land at dusk with a gravel road, cacti and mountains under a rising moon"
+      width={1408}
+      height={768}
+      priority
+      sizes="(min-width: 1024px) 540px, 100vw"
+      className="mx-auto aspect-[4/3] h-auto w-full max-w-[560px] rounded-3xl object-cover shadow-xl"
+    />
   );
 }
 
@@ -84,8 +74,8 @@ export function Hero() {
   return (
     <section className="relative overflow-hidden bg-sage-pale">
       <div className={`${container} grid items-center gap-10 py-14 sm:py-20 lg:grid-cols-2`}>
-        <div className="order-2" aria-hidden="true">
-          <HeroIllustration />
+        <div className="order-2">
+          <HeroImage />
         </div>
 
         <div className="order-1">
