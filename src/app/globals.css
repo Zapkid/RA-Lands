@@ -66,7 +66,37 @@ h3 {
   outline-offset: 2px;
 }
 
+/* Hero photo loop, 18s: empty land -> RV -> RV and person -> back to empty. */
+@keyframes hero-rv {
+  0%, 14% { opacity: 0; }
+  28%, 72% { opacity: 1; }
+  86%, 100% { opacity: 0; }
+}
+@keyframes hero-person {
+  0%, 42% { opacity: 0; }
+  56%, 72% { opacity: 1; }
+  86%, 100% { opacity: 0; }
+}
+.hero-fade-rv,
+.hero-fade-person {
+  opacity: 0;
+  animation-duration: 18s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+}
+.hero-fade-rv {
+  animation-name: hero-rv;
+}
+.hero-fade-person {
+  animation-name: hero-person;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .hero-fade-rv,
+  .hero-fade-person {
+    animation: none !important;
+    opacity: 0;
+  }
   html {
     scroll-behavior: auto;
   }

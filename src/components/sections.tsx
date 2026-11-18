@@ -56,17 +56,42 @@ export function SectionHeading({ children }: { children: ReactNode }) {
 
 /* ---------- Home hero ---------- */
 
+/**
+ * Hero photo loop (about 18s): the empty land fades into the same scene with
+ * an RV, then the RV scene with a person, then both fade back out to the
+ * empty land. The keyframes live in globals.css.
+ */
 function HeroImage() {
+  const common = "absolute inset-0 h-full w-full object-cover object-[15%_50%]";
+  const sizes = "(min-width: 1024px) 540px, 100vw";
   return (
-    <Image
-      src="/hero.jpg"
-      alt="Desert land at dusk with a gravel road, cacti and mountains under a rising moon"
-      width={1408}
-      height={768}
-      priority
-      sizes="(min-width: 1024px) 540px, 100vw"
-      className="mx-auto aspect-[4/3] h-auto w-full max-w-[560px] rounded-3xl object-cover shadow-xl"
-    />
+    <div className="relative mx-auto aspect-[3/2] w-full max-w-[600px] overflow-hidden rounded-3xl shadow-xl">
+      <Image
+        src="/hero.jpg"
+        alt="Desert land at dusk with a gravel road, cacti and mountains under a rising moon"
+        width={1408}
+        height={768}
+        priority
+        sizes={sizes}
+        className={common}
+      />
+      <Image
+        src="/hero-rv.jpg"
+        alt=""
+        width={1408}
+        height={768}
+        sizes={sizes}
+        className={`${common} hero-fade-rv`}
+      />
+      <Image
+        src="/hero-rv-person.jpg"
+        alt=""
+        width={1408}
+        height={768}
+        sizes={sizes}
+        className={`${common} hero-fade-person`}
+      />
+    </div>
   );
 }
 
